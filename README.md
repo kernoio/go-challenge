@@ -9,18 +9,21 @@ The project is already added and running on docker-compose, but feel free to mod
 
 We want you to develop a message aggregator service.
 
-- It will connect via websocket to a server which will send messages every 1 second
-- The client should aggregate messages every 1 minute and send them back.
-- Messages will be a list of requests done between many services and we'd like to know how many times during that minute a service has hit another one.
-- As a plus we'd like you to consider adding extra information on the message as part of the protocol, like if the message needs ack, message id, type and encoding.
-    - You don't need to implement ack or encoding, we only want you to add this information as part of the protocol.
-    - The server won't respond anything, so you can define it as you consider it's the best solution.
+- You will connect via websocket to a server which will:
+  - Send a first message with a list of parent services and its children
+  ```[{"parent":"36de4bf4-0293-4567-b009-75c4bc66a64d","child":"4b68f084-c3f1-4b7d-860d-7c68bbbbaa51"}, ...]```
+  - Send messages every 1 second with communications done between the children, these UUID are always at children level
+  ```{"source":"e7924178-0132-4730-9c79-89fed571567f","destination":"f3f83156-2ad0-45fa-938f-591e477a1743","method":"GET","path":"/list","httpStatus":400}```
+  - Now and then it will send a list of new parent and children that need to be added to the current one
+- The client should aggregate messages every 1 minute and send them back:
+  - The aggregation must be done at parent level, for this you'll need to use the received child uuid and search to which parent it belongs
 
 ## Considerations
 
 - Challenge must be done on Go
-- We don't want you to spend more than 2/3hs on it
-- Quality > Quantity, meaning we rather to see a good architectured solution and well written code than a fully working solution
+- You are free to structure the projects, choose frameworks and/or libraries as you see fit to deliver on this project. 
+- Feel free to use any of the infrastructure pieces provided in the docker-compose file or add your own choices to it. It does have to work with a simple `docker-compose up` tho.
+- We will be evaluating data structures, synchronization, resiliency, resource usage and performance strategies.
 - Feel free to ask any question if there is something it's not clear
 
 ## Nice to have
