@@ -16,7 +16,9 @@ We want you to develop a message aggregator service.
   ```{"source":"e7924178-0132-4730-9c79-89fed571567f","destination":"f3f83156-2ad0-45fa-938f-591e477a1743","method":"GET","path":"/list","httpStatus":400}```
   - Now and then it will send a list of new parent and children that need to be added to the current one
 - The client should aggregate messages every 1 minute and send them back:
-  - The aggregation must be done at parent level, for this you'll need to use the received child uuid and search to which parent it belongs
+  - We want to see here how many times a service has talked to another one during that minute
+  - The aggregation must be done at parent level
+  - For this you'll need to use the received child uuid and search to which parent it belongs
 
 ## Considerations
 
