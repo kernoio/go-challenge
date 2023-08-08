@@ -1,4 +1,12 @@
-# Senior Go Backend Challenge
+# Kerno's Go challenge
+Howdy 👋 We are glad you made it!
+
+We are hunting for high performance Go(lang) developers, mindful of architecture, data structures, performance and good engineering work — the kind of beast that can optimize for both speed and resource optimization.
+
+You are proficient in Go (and event better, have some C / C++ background), and interested in joining a high-tech startup building solutions for other developers in hyper-scale distributed environments... this might be just for you!
+
+
+# The challenge
 
 ## Setup
 
